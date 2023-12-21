@@ -41,8 +41,9 @@ lai_2012 <- MODISTools::mt_subset(
   progress = TRUE
 )
 
-saveRDS(lai_2012, file = "C:/Studium/AGDS_II/handfull_of_pixels/data/Lai_2012.RData")
-readRDS("C:/Studium/AGDS_II/handfull_of_pixels/data/lai_2012.rds")
+saveRDS(lai_2012, (paste0(here::here(),"./data/lai_2012.rds")))
+
+#readRDS("C:/Studium/AGDS_II/handfull_of_pixels/data/lai_2012.rds")
 
 # save this data for later use
 # to speed up computation
@@ -262,6 +263,8 @@ sites <- validation_selection |>
     Category = "pixelID"
   )
 
+saveRDS(sites, (paste0(here::here(),"./data/validation_site_selection.rds")))
+
 # combine the NBAR and land-use
 # land-cover labels by location
 # id (Category)
@@ -285,6 +288,9 @@ ml_df_split <- ml_df |>
 # data based on this split
 train <- rsample::training(ml_df_split)
 test <- rsample::testing(ml_df_split)
+
+saveRDS(train, (paste0(here::here(),"./data/train_data.rds")))
+saveRDS(test, (paste0(here::here(),"./data/test_data.rds")))
 ```
 
 ```{r, model setup and training}
@@ -344,6 +350,8 @@ xgb_results <- tune::tune_grid(
   grid = hp_settings,
   control = tune::control_grid(save_pred = TRUE)
 )
+saveRDS(xgb_results, (paste0(here::here(),"./data/xgb_results.rds")))
+
 ```
 
 ```{r, select best model}
@@ -388,5 +396,40 @@ caret::confusionMatrix(
   )
 ```
 
+```{r}
+# We can define an appeears
+# download task using a simple
+# dataframe and a map from which
+# an extent is extracted
+task_df <- data.frame(
+  task = "raster_download",
+  subtask = "swiss",
+  start = "2012-01-01",
+  end = "2012-12-31",
+  product = "MCD43A4.061",
+  layer = paste0("Nadir_Reflectance_Band", 1:4)
+)
+
+# build the area based request/task
+# using the extent of our previous
+# kmeans map, export all results
+# as geotiff (rather than netcdf)
+task <- rs_build_task(
+  df = task_df,
+  roi = kmeans_map,
+  format = "geotiff"
+)
+
+# request the task to be executed
+# with results stored in a
+# temporary location (can be changed)
+rs_request(
+  request = task,
+  user = "your_api_id",
+  transfer = TRUE,
+  path = tempdir(),
+  verbose = TRUE
+)
+```
 
 
