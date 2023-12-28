@@ -1,0 +1,1269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gmi:MI_Metadata
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.isotc211.org/2005/gmi https://ngdc.noaa.gov/metadata/published/xsd/schema.xsd"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:gco="http://www.isotc211.org/2005/gco"
+  xmlns:gmd="http://www.isotc211.org/2005/gmd"
+  xmlns:gmx="http://www.isotc211.org/2005/gmx"
+  xmlns:gml="http://www.opengis.net/gml/3.2"
+  xmlns:gss="http://www.isotc211.org/2005/gss"
+  xmlns:gts="http://www.isotc211.org/2005/gts"
+  xmlns:gsr="http://www.isotc211.org/2005/gsr"
+  xmlns:gmi="http://www.isotc211.org/2005/gmi"
+  xmlns:srv="http://www.isotc211.org/2005/srv">
+
+
+  <!-- FILE IDENTIFIER -->
+  <gmd:fileIdentifier>
+    <gco:CharacterString>nbar-lc-2-MCD43A4-061-metadata.xml</gco:CharacterString>
+  </gmd:fileIdentifier>
+
+  <!-- METADATA AND RESOURCE LANGUAGE -->
+  <gmd:language>
+    <gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/php/code_list.php" codeListValue="eng">eng
+    </gmd:LanguageCode>
+  </gmd:language>
+
+  <!-- CHARACTER SET -->
+  <gmd:characterSet>
+    <gmd:MD_CharacterSetCode
+      codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_CharacterSetCode"
+      codeListValue="UTF8">UTF8
+    </gmd:MD_CharacterSetCode>
+  </gmd:characterSet>
+
+  <!-- HIERARCHY LEVEL -->
+  <gmd:hierarchyLevel>
+    <gmd:MD_ScopeCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ScopeCode"
+                      codeListValue="series">series
+    </gmd:MD_ScopeCode>
+  </gmd:hierarchyLevel>
+
+  <!-- CONTACT INFORMATION -->
+  <gmd:contact>
+    <gmd:CI_ResponsibleParty>
+      <gmd:organisationName>
+        <gco:CharacterString>LP DAAC at The EROS Center</gco:CharacterString>
+      </gmd:organisationName>
+      <gmd:contactInfo>
+        <gmd:CI_Contact>
+          <gmd:phone>
+            <gmd:CI_Telephone>
+              <gmd:voice>
+                <gco:CharacterString>605-594-6116</gco:CharacterString>
+              </gmd:voice>
+              <gmd:voice>
+                <gco:CharacterString>866-573-3222 (866-LPE-DAAC)</gco:CharacterString>
+              </gmd:voice>
+              <gmd:facsimile>
+                <gco:CharacterString>605-594-6963</gco:CharacterString>
+              </gmd:facsimile>
+            </gmd:CI_Telephone>
+          </gmd:phone>
+          <gmd:address>
+            <gmd:CI_Address>
+              <gmd:deliveryPoint>
+                <gco:CharacterString>Mundt Federal Building</gco:CharacterString>
+              </gmd:deliveryPoint>
+              <gmd:city>
+                <gco:CharacterString>Sioux Falls</gco:CharacterString>
+              </gmd:city>
+              <gmd:administrativeArea>
+                <gco:CharacterString>SD</gco:CharacterString>
+              </gmd:administrativeArea>
+              <gmd:postalCode>
+                <gco:CharacterString>57198</gco:CharacterString>
+              </gmd:postalCode>
+              <gmd:country>
+                <gco:CharacterString>United States</gco:CharacterString>
+              </gmd:country>
+              <gmd:electronicMailAddress>
+                <gco:CharacterString>LPDAAC@usgs.gov</gco:CharacterString>
+              </gmd:electronicMailAddress>
+            </gmd:CI_Address>
+          </gmd:address>
+          <gmd:onlineResource>
+            <gmd:CI_OnlineResource>
+              <gmd:linkage>
+                <gmd:URL>https://lpdaac.usgs.gov/</gmd:URL>
+              </gmd:linkage>
+            </gmd:CI_OnlineResource>
+          </gmd:onlineResource>
+        </gmd:CI_Contact>
+      </gmd:contactInfo>
+      <gmd:role>
+        <gmd:CI_RoleCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode"
+                         codeListValue="pointOfContact" codeSpace="007">pointOfContact
+        </gmd:CI_RoleCode>
+      </gmd:role>
+    </gmd:CI_ResponsibleParty>
+  </gmd:contact>
+
+  <!-- METADATA DATE -->
+  <gmd:dateStamp>
+    <gco:Date>2023-12-21</gco:Date>
+  </gmd:dateStamp>
+
+  <!-- METADATA STANDARD NAME -->
+  <gmd:metadataStandardName>
+    <gco:CharacterString>ISO 19115-2 Geographic Information - Metadata Part 2 Extensions for imagery and gridded data
+    </gco:CharacterString>
+  </gmd:metadataStandardName>
+
+  <!-- METADATA VERSION -->
+  <gmd:metadataStandardVersion>
+    <gco:CharacterString>ISO 19115-2:2009</gco:CharacterString>
+  </gmd:metadataStandardVersion>
+
+  <!-- SPATIAL REPRESENTATION -->
+  <gmd:spatialRepresentationInfo>
+    <gmd:MD_VectorSpatialRepresentation>
+      <gmd:topologyLevel>
+        <gmd:MD_TopologyLevelCode
+          codeList="http://www.ngdc.noaa.gov/metadata/published/xsd/schema/resources/Codelist/gmxCodelists.xml#MD_TopologyLevelCode"
+          codeListValue="geometryOnly">geometryOnly
+        </gmd:MD_TopologyLevelCode>
+      </gmd:topologyLevel>
+      <gmd:geometricObjects>
+        <gmd:MD_GeometricObjects>
+          <gmd:geometricObjectType>
+            <gmd:MD_GeometricObjectTypeCode
+              codeList="http://www.ngdc.noaa.gov/metadata/published/xsd/schema/resources/Codelist/gmxCodelists.xml#MD_GeometricObjectTypeCode"
+              codeListValue="point">point
+            </gmd:MD_GeometricObjectTypeCode>
+          </gmd:geometricObjectType>
+          <gmd:geometricObjectCount>
+            <gco:Integer>148</gco:Integer>
+          </gmd:geometricObjectCount>
+        </gmd:MD_GeometricObjects>
+      </gmd:geometricObjects>
+    </gmd:MD_VectorSpatialRepresentation>
+  </gmd:spatialRepresentationInfo>
+
+  <!-- DATA INFORMATION -->
+  <gmd:identificationInfo>
+    <gmd:MD_DataIdentification>
+      <gmd:citation>
+        <gmd:CI_Citation>
+          <gmd:title>
+            <gco:CharacterString>MCD43A4.061</gco:CharacterString>
+          </gmd:title>
+          <gmd:alternateTitle>
+            <gco:CharacterString>Bidirectional Reflectance Distribution Function (BRDF) and Albedo</gco:CharacterString>
+          </gmd:alternateTitle>
+          <gmd:date>
+            <gmd:CI_Date>
+              <gmd:date>
+                <gco:Date>2023-12-21</gco:Date>
+              </gmd:date>
+              <gmd:dateType>
+                <gmd:CI_DateTypeCode
+                  codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode"
+                  codeListValue="creation">creation
+                </gmd:CI_DateTypeCode>
+              </gmd:dateType>
+            </gmd:CI_Date>
+          </gmd:date>
+          <gmd:identifier>
+            <gmd:MD_Identifier>
+              <gmd:code>
+                <gmx:Anchor
+                  xlink:href="https://doi.org/10.5067/MODIS/MCD43A4.061"
+                  xlink:title="DOI"
+                  xlink:actuate="onRequest">
+                    10.5067/MODIS/MCD43A4.061
+                </gmx:Anchor>
+              </gmd:code>
+             </gmd:MD_Identifier>
+          </gmd:identifier>
+        </gmd:CI_Citation>
+      </gmd:citation>
+      <gmd:abstract>
+        <gco:CharacterString>
+          The Application for Extracting and Exploring Analysis Ready Samples (AρρEEARS) offers a simple and efficient
+          way to access and transform geospatial data from a variety of federal data archives. AppEEARS enables users
+          to subset geospatial datasets using spatial, temporal, and band/layer parameters. Two types of sample
+          requests are available: point samples for geographic coordinates and area samples for spatial areas via
+          vector polygons. Sample requests submitted to AρρEEARS provide users not only with data values, but also
+          associated quality data values. Interactive visualizations with summary statistics are provided for each
+          sample within the application, which allow users to preview and interact with their samples before
+          downloading their data.
+        </gco:CharacterString>
+      </gmd:abstract>
+      <gmd:resourceConstraints>
+        <gmd:MD_LegalConstraints>
+          <gmd:useLimitation>
+            <gco:CharacterString>Disclaimer - While every effort has been made to ensure that these data are accurate
+              and reliable within the limits of the current state of the art, NASA cannot assume liability for any
+              damages caused by any errors or omissions in the data, nor as a result of the failure of the data to
+              function on a particular system. NASA makes no warranty, expressed or implied, nor does the fact of
+              distribution constitute such a warranty.
+            </gco:CharacterString>
+          </gmd:useLimitation>
+        </gmd:MD_LegalConstraints>
+      </gmd:resourceConstraints>
+      <gmd:spatialResolution>
+        <gmd:MD_Resolution>
+          <gmd:distance>
+            <gco:Distance uom="meters">500</gco:Distance>
+          </gmd:distance>
+        </gmd:MD_Resolution>
+      </gmd:spatialResolution>
+      <gmd:language>
+        <gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/php/code_list.php" codeListValue="eng">eng
+        </gmd:LanguageCode>
+      </gmd:language>
+      <gmd:extent>
+        <gmd:EX_Extent>
+          <gmd:temporalElement>
+            <gmd:EX_TemporalExtent>
+              <gmd:extent>
+                <gml:TimeNode gml:id="TemporalGranularity">
+                  <gml:description>Daily</gml:description>
+                </gml:TimeNode>
+              </gmd:extent>
+            </gmd:EX_TemporalExtent>
+          </gmd:temporalElement>
+        </gmd:EX_Extent>
+      </gmd:extent>
+      <gmd:supplementalInformation>
+        <gco:CharacterString>Schaaf, C., Wang, Z. (2021). MODIS/Terra+Aqua BRDF/Albedo Nadir BRDF Adjusted Ref Daily L3 Global - 500m V061. NASA EOSDIS Land Processes Distributed Active Archive Center. Accessed 2023-12-21 from https://doi.org/10.5067/MODIS/MCD43A4.061. Accessed December 21, 2023.</gco:CharacterString>
+      </gmd:supplementalInformation>
+      <gmd:supplementalInformation>
+        <gco:CharacterString>AppEEARS Team. (2023). Application for Extracting and Exploring Analysis Ready Samples (AppEEARS). Ver. 3.40.2. NASA EOSDIS Land Processes Distributed Active Archive Center (LP DAAC), USGS/Earth Resources Observation and Science (EROS) Center, Sioux Falls, South Dakota, USA. Accessed December 21, 2023. https://appeears.earthdatacloud.nasa.gov</gco:CharacterString>
+      </gmd:supplementalInformation>
+    </gmd:MD_DataIdentification>
+  </gmd:identificationInfo>
+
+  <!-- SOURCE AND PROCESSING INFORMATION -->
+  <gmd:dataQualityInfo>
+    <gmd:DQ_DataQuality>
+      <gmd:scope>
+        <gmd:DQ_Scope>
+          <gmd:level>
+            <gmd:MD_ScopeCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ScopeCode"
+                              codeListValue="dataset">dataset
+            </gmd:MD_ScopeCode>
+          </gmd:level>
+          <gmd:extent>
+            <gmd:EX_Extent>
+              <gmd:description>
+                <gco:CharacterString>Extracted points</gco:CharacterString>
+              </gmd:description>
+              <gmd:geographicElement>
+                <gmd:EX_BoundingPolygon>
+                  <gmd:polygon>
+                    <gml:MultiPoint gml:id="ID">
+                      <gml:pointMembers>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">1
+                          </gml:identifier>
+                          <gml:name>43931</gml:name>
+                          <gml:pos>63.2125 177.7958</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">2
+                          </gml:identifier>
+                          <gml:name>34904</gml:name>
+                          <gml:pos>12.5042 122.0208</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">3
+                          </gml:identifier>
+                          <gml:name>21060</gml:name>
+                          <gml:pos>6.1458 42.1292</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">4
+                          </gml:identifier>
+                          <gml:name>1150</gml:name>
+                          <gml:pos>53.2208 -71.2625</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">5
+                          </gml:identifier>
+                          <gml:name>16494</gml:name>
+                          <gml:pos>12.4542 -85.7958</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">6
+                          </gml:identifier>
+                          <gml:name>14560</gml:name>
+                          <gml:pos>54.9042 81.5542</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">7
+                          </gml:identifier>
+                          <gml:name>16329</gml:name>
+                          <gml:pos>55.3625 63.5708</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">8
+                          </gml:identifier>
+                          <gml:name>901</gml:name>
+                          <gml:pos>7.6792 25.1458</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">9
+                          </gml:identifier>
+                          <gml:name>39458</gml:name>
+                          <gml:pos>0.7792 39.0792</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">10
+                          </gml:identifier>
+                          <gml:name>21990</gml:name>
+                          <gml:pos>7.3292 25.2292</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">11
+                          </gml:identifier>
+                          <gml:name>10266</gml:name>
+                          <gml:pos>10.0208 12.7458</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">12
+                          </gml:identifier>
+                          <gml:name>15563</gml:name>
+                          <gml:pos>6.0625 40.9875</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">13
+                          </gml:identifier>
+                          <gml:name>18556</gml:name>
+                          <gml:pos>43.1042 54.9542</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">14
+                          </gml:identifier>
+                          <gml:name>7694</gml:name>
+                          <gml:pos>38.2458 67.3625</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">15
+                          </gml:identifier>
+                          <gml:name>39092</gml:name>
+                          <gml:pos>3.9875 45.4792</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">16
+                          </gml:identifier>
+                          <gml:name>14425</gml:name>
+                          <gml:pos>50.0042 80.9875</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">17
+                          </gml:identifier>
+                          <gml:name>2043</gml:name>
+                          <gml:pos>55.3625 -77.3292</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">18
+                          </gml:identifier>
+                          <gml:name>1766</gml:name>
+                          <gml:pos>8.9708 28.1125</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">19
+                          </gml:identifier>
+                          <gml:name>6141</gml:name>
+                          <gml:pos>10.4542 9.3542</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">20
+                          </gml:identifier>
+                          <gml:name>37165</gml:name>
+                          <gml:pos>18.9958 95.8125</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">21
+                          </gml:identifier>
+                          <gml:name>2088</gml:name>
+                          <gml:pos>10.4875 -1.9625</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">22
+                          </gml:identifier>
+                          <gml:name>31698</gml:name>
+                          <gml:pos>67.8708 -69.0042</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">23
+                          </gml:identifier>
+                          <gml:name>14446</gml:name>
+                          <gml:pos>12.6375 -14.3542</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">24
+                          </gml:identifier>
+                          <gml:name>24702</gml:name>
+                          <gml:pos>37.0708 -109.3458</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">25
+                          </gml:identifier>
+                          <gml:name>17881</gml:name>
+                          <gml:pos>13.9708 43.6625</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">26
+                          </gml:identifier>
+                          <gml:name>23656</gml:name>
+                          <gml:pos>14.9792 39.2625</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">27
+                          </gml:identifier>
+                          <gml:name>37376</gml:name>
+                          <gml:pos>22.1542 92.3292</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">28
+                          </gml:identifier>
+                          <gml:name>941</gml:name>
+                          <gml:pos>7.8292 -2.3708</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">29
+                          </gml:identifier>
+                          <gml:name>3436</gml:name>
+                          <gml:pos>67.3375 -84.8792</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">30
+                          </gml:identifier>
+                          <gml:name>27519</gml:name>
+                          <gml:pos>0.4042 35.9125</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">31
+                          </gml:identifier>
+                          <gml:name>3455</gml:name>
+                          <gml:pos>20.6042 -104.3292</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">32
+                          </gml:identifier>
+                          <gml:name>11156</gml:name>
+                          <gml:pos>7.8708 23.0958</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">33
+                          </gml:identifier>
+                          <gml:name>6109</gml:name>
+                          <gml:pos>59.9875 -148.6625</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">34
+                          </gml:identifier>
+                          <gml:name>36177</gml:name>
+                          <gml:pos>22.6875 109.4792</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">35
+                          </gml:identifier>
+                          <gml:name>22350</gml:name>
+                          <gml:pos>46.1042 79.0542</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">36
+                          </gml:identifier>
+                          <gml:name>1657</gml:name>
+                          <gml:pos>10.2708 19.0125</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">37
+                          </gml:identifier>
+                          <gml:name>20530</gml:name>
+                          <gml:pos>10.8792 32.4458</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">38
+                          </gml:identifier>
+                          <gml:name>18689</gml:name>
+                          <gml:pos>3.6125 37.5042</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">39
+                          </gml:identifier>
+                          <gml:name>5204</gml:name>
+                          <gml:pos>7.6042 24.5292</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">40
+                          </gml:identifier>
+                          <gml:name>37356</gml:name>
+                          <gml:pos>33.8125 96.1625</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">41
+                          </gml:identifier>
+                          <gml:name>20337</gml:name>
+                          <gml:pos>66.8625 52.3292</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">42
+                          </gml:identifier>
+                          <gml:name>11142</gml:name>
+                          <gml:pos>70.4875 132.3375</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">43
+                          </gml:identifier>
+                          <gml:name>13460</gml:name>
+                          <gml:pos>11.8958 1.0208</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">44
+                          </gml:identifier>
+                          <gml:name>27826</gml:name>
+                          <gml:pos>40.3292 -119.8958</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">45
+                          </gml:identifier>
+                          <gml:name>18990</gml:name>
+                          <gml:pos>6.4208 37.5125</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">46
+                          </gml:identifier>
+                          <gml:name>27357</gml:name>
+                          <gml:pos>12.3458 -3.8458</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">47
+                          </gml:identifier>
+                          <gml:name>5047</gml:name>
+                          <gml:pos>8.5542 17.2625</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">48
+                          </gml:identifier>
+                          <gml:name>42580</gml:name>
+                          <gml:pos>12.3625 -11.9042</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">49
+                          </gml:identifier>
+                          <gml:name>33235</gml:name>
+                          <gml:pos>67.9292 -152.8792</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">50
+                          </gml:identifier>
+                          <gml:name>38122</gml:name>
+                          <gml:pos>31.0458 81.8375</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">51
+                          </gml:identifier>
+                          <gml:name>18871</gml:name>
+                          <gml:pos>40.7542 -115.6958</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">52
+                          </gml:identifier>
+                          <gml:name>16133</gml:name>
+                          <gml:pos>8.8042 -67.0042</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">53
+                          </gml:identifier>
+                          <gml:name>33057</gml:name>
+                          <gml:pos>59.8625 -151.5125</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">54
+                          </gml:identifier>
+                          <gml:name>13519</gml:name>
+                          <gml:pos>64.8458 99.6875</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">55
+                          </gml:identifier>
+                          <gml:name>21421</gml:name>
+                          <gml:pos>8.8375 23.3208</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">56
+                          </gml:identifier>
+                          <gml:name>17533</gml:name>
+                          <gml:pos>4.7708 42.8542</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">57
+                          </gml:identifier>
+                          <gml:name>42017</gml:name>
+                          <gml:pos>9.8208 5.7292</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">58
+                          </gml:identifier>
+                          <gml:name>22536</gml:name>
+                          <gml:pos>27.0292 -112.8042</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">59
+                          </gml:identifier>
+                          <gml:name>25798</gml:name>
+                          <gml:pos>25.9292 -100.7958</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">60
+                          </gml:identifier>
+                          <gml:name>1602</gml:name>
+                          <gml:pos>54.2208 -75.2625</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">61
+                          </gml:identifier>
+                          <gml:name>1575</gml:name>
+                          <gml:pos>8.6792 -2.7542</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">62
+                          </gml:identifier>
+                          <gml:name>14566</gml:name>
+                          <gml:pos>50.1125 79.0375</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">63
+                          </gml:identifier>
+                          <gml:name>3062</gml:name>
+                          <gml:pos>50.2958 -92.1375</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">64
+                          </gml:identifier>
+                          <gml:name>16147</gml:name>
+                          <gml:pos>13.3125 -13.7708</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">65
+                          </gml:identifier>
+                          <gml:name>11251</gml:name>
+                          <gml:pos>12.0292 -13.1292</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">66
+                          </gml:identifier>
+                          <gml:name>32007</gml:name>
+                          <gml:pos>24.9875 -99.9542</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">67
+                          </gml:identifier>
+                          <gml:name>5530</gml:name>
+                          <gml:pos>21.5792 73.8375</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">68
+                          </gml:identifier>
+                          <gml:name>10923</gml:name>
+                          <gml:pos>6.4208 24.3458</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">69
+                          </gml:identifier>
+                          <gml:name>32247</gml:name>
+                          <gml:pos>41.4375 -105.3208</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">70
+                          </gml:identifier>
+                          <gml:name>1699</gml:name>
+                          <gml:pos>65.9542 -67.7792</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">71
+                          </gml:identifier>
+                          <gml:name>23441</gml:name>
+                          <gml:pos>63.8542 34.8208</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">72
+                          </gml:identifier>
+                          <gml:name>14362</gml:name>
+                          <gml:pos>68.2708 93.9208</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">73
+                          </gml:identifier>
+                          <gml:name>14737</gml:name>
+                          <gml:pos>34.2375 72.9208</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">74
+                          </gml:identifier>
+                          <gml:name>1265</gml:name>
+                          <gml:pos>52.3542 -72.6125</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">75
+                          </gml:identifier>
+                          <gml:name>42411</gml:name>
+                          <gml:pos>6.6458 -8.9208</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">76
+                          </gml:identifier>
+                          <gml:name>3514</gml:name>
+                          <gml:pos>22.1375 -104.6042</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">77
+                          </gml:identifier>
+                          <gml:name>15605</gml:name>
+                          <gml:pos>4.1292 38.7708</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">78
+                          </gml:identifier>
+                          <gml:name>10863</gml:name>
+                          <gml:pos>44.5875 117.9792</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">79
+                          </gml:identifier>
+                          <gml:name>1554</gml:name>
+                          <gml:pos>9.8042 -85.1958</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">80
+                          </gml:identifier>
+                          <gml:name>5054</gml:name>
+                          <gml:pos>59.4792 -111.3375</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">81
+                          </gml:identifier>
+                          <gml:name>26025</gml:name>
+                          <gml:pos>11.7292 -1.6708</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">82
+                          </gml:identifier>
+                          <gml:name>21434</gml:name>
+                          <gml:pos>70.5958 55.1375</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">83
+                          </gml:identifier>
+                          <gml:name>26929</gml:name>
+                          <gml:pos>12.1375 -7.5375</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">84
+                          </gml:identifier>
+                          <gml:name>32320</gml:name>
+                          <gml:pos>34.1292 -110.2708</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">85
+                          </gml:identifier>
+                          <gml:name>4149</gml:name>
+                          <gml:pos>27.5542 -110.4875</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">86
+                          </gml:identifier>
+                          <gml:name>11299</gml:name>
+                          <gml:pos>6.1708 39.8792</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">87
+                          </gml:identifier>
+                          <gml:name>26496</gml:name>
+                          <gml:pos>61.2792 9.3792</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">88
+                          </gml:identifier>
+                          <gml:name>3643</gml:name>
+                          <gml:pos>21.6542 -106.5458</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">89
+                          </gml:identifier>
+                          <gml:name>34289</gml:name>
+                          <gml:pos>59.9708 153.8292</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">90
+                          </gml:identifier>
+                          <gml:name>2157</gml:name>
+                          <gml:pos>7.9625 12.6542</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">91
+                          </gml:identifier>
+                          <gml:name>21869</gml:name>
+                          <gml:pos>53.9125 38.0125</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">92
+                          </gml:identifier>
+                          <gml:name>41209</gml:name>
+                          <gml:pos>8.0708 15.8458</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">93
+                          </gml:identifier>
+                          <gml:name>19843</gml:name>
+                          <gml:pos>10.3542 34.5625</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">94
+                          </gml:identifier>
+                          <gml:name>20998</gml:name>
+                          <gml:pos>10.4542 30.4375</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">95
+                          </gml:identifier>
+                          <gml:name>17247</gml:name>
+                          <gml:pos>0.3542 42.8125</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">96
+                          </gml:identifier>
+                          <gml:name>3629</gml:name>
+                          <gml:pos>36.4875 -102.8708</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">97
+                          </gml:identifier>
+                          <gml:name>16512</gml:name>
+                          <gml:pos>43.3458 73.7042</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">98
+                          </gml:identifier>
+                          <gml:name>16351</gml:name>
+                          <gml:pos>7.7292 -69.5042</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">99
+                          </gml:identifier>
+                          <gml:name>12208</gml:name>
+                          <gml:pos>4.8708 97.7458</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">100
+                          </gml:identifier>
+                          <gml:name>25337</gml:name>
+                          <gml:pos>7.2292 44.2958</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">101
+                          </gml:identifier>
+                          <gml:name>687</gml:name>
+                          <gml:pos>51.7542 93.8875</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">102
+                          </gml:identifier>
+                          <gml:name>25503</gml:name>
+                          <gml:pos>42.4458 9.0375</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">103
+                          </gml:identifier>
+                          <gml:name>17555</gml:name>
+                          <gml:pos>0.3792 41.8125</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">104
+                          </gml:identifier>
+                          <gml:name>39467</gml:name>
+                          <gml:pos>34.9458 -2.8208</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">105
+                          </gml:identifier>
+                          <gml:name>15535</gml:name>
+                          <gml:pos>58.3042 71.6958</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">106
+                          </gml:identifier>
+                          <gml:name>23466</gml:name>
+                          <gml:pos>25.0458 -103.5708</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">107
+                          </gml:identifier>
+                          <gml:name>15078</gml:name>
+                          <gml:pos>3.5792 32.5958</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">108
+                          </gml:identifier>
+                          <gml:name>16335</gml:name>
+                          <gml:pos>5.9875 16.5958</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">109
+                          </gml:identifier>
+                          <gml:name>5395</gml:name>
+                          <gml:pos>7.7375 -66.1792</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">110
+                          </gml:identifier>
+                          <gml:name>790</gml:name>
+                          <gml:pos>11.5708 -7.5125</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">111
+                          </gml:identifier>
+                          <gml:name>17846</gml:name>
+                          <gml:pos>35.6375 49.1042</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">112
+                          </gml:identifier>
+                          <gml:name>10505</gml:name>
+                          <gml:pos>50.7292 -121.1625</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">113
+                          </gml:identifier>
+                          <gml:name>15170</gml:name>
+                          <gml:pos>59.2875 78.5792</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">114
+                          </gml:identifier>
+                          <gml:name>6140</gml:name>
+                          <gml:pos>58.2208 -151.9958</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">115
+                          </gml:identifier>
+                          <gml:name>7802</gml:name>
+                          <gml:pos>4.8542 37.7708</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">116
+                          </gml:identifier>
+                          <gml:name>13156</gml:name>
+                          <gml:pos>59.4792 99.4542</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">117
+                          </gml:identifier>
+                          <gml:name>23312</gml:name>
+                          <gml:pos>40.1542 25.7792</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">118
+                          </gml:identifier>
+                          <gml:name>34885</gml:name>
+                          <gml:pos>33.3292 126.5125</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">119
+                          </gml:identifier>
+                          <gml:name>36536</gml:name>
+                          <gml:pos>28.6792 104.8708</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">120
+                          </gml:identifier>
+                          <gml:name>18526</gml:name>
+                          <gml:pos>50.7208 49.7375</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">121
+                          </gml:identifier>
+                          <gml:name>32430</gml:name>
+                          <gml:pos>31.4458 -115.8875</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">122
+                          </gml:identifier>
+                          <gml:name>27692</gml:name>
+                          <gml:pos>55.5208 79.7542</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">123
+                          </gml:identifier>
+                          <gml:name>2227</gml:name>
+                          <gml:pos>7.1625 8.7542</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">124
+                          </gml:identifier>
+                          <gml:name>4275</gml:name>
+                          <gml:pos>40.7292 -109.5542</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">125
+                          </gml:identifier>
+                          <gml:name>29589</gml:name>
+                          <gml:pos>16.8292 -11.9125</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">126
+                          </gml:identifier>
+                          <gml:name>21992</gml:name>
+                          <gml:pos>7.4625 24.3708</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">127
+                          </gml:identifier>
+                          <gml:name>15504</gml:name>
+                          <gml:pos>69.9958 82.8125</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">128
+                          </gml:identifier>
+                          <gml:name>29190</gml:name>
+                          <gml:pos>39.8708 -106.0042</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">129
+                          </gml:identifier>
+                          <gml:name>39275</gml:name>
+                          <gml:pos>71.4125 71.6042</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">130
+                          </gml:identifier>
+                          <gml:name>39402</gml:name>
+                          <gml:pos>32.6125 46.0792</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">131
+                          </gml:identifier>
+                          <gml:name>7862</gml:name>
+                          <gml:pos>9.5125 22.0958</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">132
+                          </gml:identifier>
+                          <gml:name>23810</gml:name>
+                          <gml:pos>10.7208 14.7375</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">133
+                          </gml:identifier>
+                          <gml:name>26797</gml:name>
+                          <gml:pos>39.7958 -1.5458</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">134
+                          </gml:identifier>
+                          <gml:name>17489</gml:name>
+                          <gml:pos>59.8625 40.2625</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">135
+                          </gml:identifier>
+                          <gml:name>20647</gml:name>
+                          <gml:pos>35.6125 3.9458</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">136
+                          </gml:identifier>
+                          <gml:name>40124</gml:name>
+                          <gml:pos>6.9458 29.9208</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">137
+                          </gml:identifier>
+                          <gml:name>17527</gml:name>
+                          <gml:pos>6.0625 -3.2125</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">138
+                          </gml:identifier>
+                          <gml:name>3148</gml:name>
+                          <gml:pos>9.4958 -74.8042</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">139
+                          </gml:identifier>
+                          <gml:name>11046</gml:name>
+                          <gml:pos>6.0458 26.3792</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">140
+                          </gml:identifier>
+                          <gml:name>5693</gml:name>
+                          <gml:pos>58.5542 -126.5625</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">141
+                          </gml:identifier>
+                          <gml:name>19681</gml:name>
+                          <gml:pos>59.1125 48.9125</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">142
+                          </gml:identifier>
+                          <gml:name>41598</gml:name>
+                          <gml:pos>8.9875 10.9625</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">143
+                          </gml:identifier>
+                          <gml:name>32467</gml:name>
+                          <gml:pos>43.5125 -114.6875</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">144
+                          </gml:identifier>
+                          <gml:name>25010</gml:name>
+                          <gml:pos>35.6792 9.6958</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">145
+                          </gml:identifier>
+                          <gml:name>41456</gml:name>
+                          <gml:pos>5.8875 12.5542</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">146
+                          </gml:identifier>
+                          <gml:name>13337</gml:name>
+                          <gml:pos>22.5292 85.0542</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">147
+                          </gml:identifier>
+                          <gml:name>12906</gml:name>
+                          <gml:pos>50.0292 98.0708</gml:pos>
+                        </gml:Point>
+                        <gml:Point gml:id="point_1">
+                          <gml:identifier codeSpace="https://lpdaacsvc.cr.usgs.gov/appeears/">148
+                          </gml:identifier>
+                          <gml:name>19840</gml:name>
+                          <gml:pos>11.6375 35.4875</gml:pos>
+                        </gml:Point>
+                      </gml:pointMembers>
+                    </gml:MultiPoint>
+                  </gmd:polygon>
+                </gmd:EX_BoundingPolygon>
+              </gmd:geographicElement>
+              <gmd:temporalElement>
+                <gmd:EX_TemporalExtent>
+                  <gmd:extent>
+                    <gml:TimeInstant gml:id="StartDate">
+                      <gml:name>Start Date</gml:name>
+                      <gml:timePosition>2012-01-01</gml:timePosition>
+                    </gml:TimeInstant>
+                  </gmd:extent>
+                </gmd:EX_TemporalExtent>
+              </gmd:temporalElement>
+              <gmd:temporalElement>
+                <gmd:EX_TemporalExtent>
+                  <gmd:extent>
+                    <gml:TimeInstant gml:id="EndDate">
+                      <gml:timePosition>2012-12-31</gml:timePosition>
+                    </gml:TimeInstant>
+                  </gmd:extent>
+                </gmd:EX_TemporalExtent>
+              </gmd:temporalElement>
+            </gmd:EX_Extent>
+          </gmd:extent>
+        </gmd:DQ_Scope>
+      </gmd:scope>
+      <gmd:lineage>
+        <gmd:LI_Lineage>
+          <gmd:processStep>
+            <gmi:LE_ProcessStep>
+              <gmd:description>
+                <gco:CharacterString>Software Information</gco:CharacterString>
+              </gmd:description>
+              <gmi:processingInformation>
+                <gmi:LE_Processing>
+                  <gmi:identifier>
+                    <gmd:MD_Identifier>
+                      <gmd:code>
+                        <gmx:Anchor
+                          xlink:href="https://lpdaacsvc.cr.usgs.gov/appeears/"
+                          xlink:title="AppEEARS"
+                          xlink:actuate="onRequest">
+                            Application for Extracting and Exploring Analysis Ready Samples
+                        </gmx:Anchor>
+                      </gmd:code>
+                    </gmd:MD_Identifier>
+                  </gmi:identifier>
+                  <gmi:softwareReference>
+                    <gmd:CI_Citation>
+                      <gmd:title>
+                        <gco:CharacterString>Application for Extracting and Exploring Analysis Ready Samples</gco:CharacterString>
+                      </gmd:title>
+                      <gmd:alternateTitle>
+                        <gco:CharacterString>AppEEARS</gco:CharacterString>
+                      </gmd:alternateTitle>
+                      <gmd:date>
+                        <gmd:CI_Date>
+                          <gmd:date>
+                            <gco:Date>2023-12-21</gco:Date>
+                          </gmd:date>
+                          <gmd:dateType>
+                            <gmd:CI_DateTypeCode
+                              codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode"
+                              codeListValue="creation">creation
+                            </gmd:CI_DateTypeCode>
+                          </gmd:dateType>
+                        </gmd:CI_Date>
+                      </gmd:date>
+                      <gmd:edition>
+                        <gco:CharacterString>3.40.2</gco:CharacterString>
+                      </gmd:edition>
+                    </gmd:CI_Citation>
+                  </gmi:softwareReference>
+                </gmi:LE_Processing>
+              </gmi:processingInformation>
+            </gmi:LE_ProcessStep>
+          </gmd:processStep>
+          <gmd:source>
+            <gmi:LE_Source>
+              <gmd:sourceCitation>
+                <gmd:CI_Citation>
+                  <gmd:title>
+                    <gmx:FileName src="nbar-lc-2-granule-list.txt">Text file with data pool URLs for all source granules used in the extraction</gmx:FileName>
+                  </gmd:title>
+                  <gmd:date>
+                    <gmd:CI_Date>
+                      <gmd:date>
+                        <gco:Date>2023-12-21</gco:Date>
+                      </gmd:date>
+                      <gmd:dateType>
+                        <gmd:CI_DateTypeCode
+                          codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode"
+                          codeListValue="creation">creation
+                        </gmd:CI_DateTypeCode>
+                      </gmd:dateType>
+                    </gmd:CI_Date>
+                  </gmd:date>
+                </gmd:CI_Citation>
+              </gmd:sourceCitation>
+            </gmi:LE_Source>
+          </gmd:source>
+        </gmd:LI_Lineage>
+      </gmd:lineage>
+    </gmd:DQ_DataQuality>
+  </gmd:dataQualityInfo>
+
+  <!-- RESOURCE AND METADATA CONSTRAINTS -->
+  <gmd:metadataConstraints>
+    <gmd:MD_LegalConstraints>
+      <gmd:useLimitation>
+        <gco:CharacterString>Disclaimer - While every effort has been made to ensure that these data are accurate
+          and reliable within the limits of the current state of the art, NASA cannot assume liability for any
+          damages caused by any errors or omissions in the data, nor as a result of the failure of the data to
+          function on a particular system. NASA makes no warranty, expressed or implied, nor does the fact of
+          distribution constitute such a warranty.
+        </gco:CharacterString>
+      </gmd:useLimitation>
+    </gmd:MD_LegalConstraints>
+  </gmd:metadataConstraints>
+
+</gmi:MI_Metadata>
