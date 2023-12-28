@@ -221,3 +221,162 @@ caret::confusionMatrix(
   reference = as.factor(test$LC1),
   data = as.factor(test_results$.pred_class)
 )
+
+
+### Model scaling
+kmeans_map <- readRDS(paste0(here::here(),"./data/kmeans_map.rds"))
+
+# We can define an appeears
+# download task using a simple
+# dataframe and a map from which
+# an extent is extracted
+task_df <- data.frame(
+  task = "raster_download",
+  subtask = "swiss",
+  start = "2012-01-01",
+  end = "2012-12-31",
+  product = "MCD43A4.061",
+  layer = paste0("Nadir_Reflectance_Band", 1:4)
+)
+
+# build the area based request/task
+# using the extent of our previous
+# kmeans map, export all results
+# as geotiff (rather than netcdf)
+task <- rs_build_task(
+  df = task_df,
+  roi = kmeans_map,
+  format = "geotiff"
+)
+
+# request the task to be executed
+# with results stored in a
+# temporary location (can be changed)
+rs_request(
+  request = task,
+  user = "earth_data_manuel",
+  transfer = TRUE,
+  path = paste0(here::here(),"./data-raw/model_scaling"),
+  verbose = TRUE
+)
+
+# Model execution
+files <- list.files(
+  paste0(here::here(),"./data-raw/model_scaling"),
+  "*Reflectance*",
+  recursive = TRUE,
+  full.names = TRUE
+)
+
+# load this spatial data to run the model
+# spatially
+swiss_multispec_data <- terra::rast(files)
+
+# renaming data
+# the model only works when variable names
+# are consistent we therefore rename them
+band_names <- data.frame(
+  name = names(swiss_multispec_data)
+) |>
+  mutate(
+    date = as.Date(substr(name, 40, 46), format = "%Y%j"),
+    name = paste(substr(name, 1, 35), date, sep = "_"),
+    name = gsub("\\.","_", name)
+  )
+
+# reassign the names of the terra image stack
+names(swiss_multispec_data) <- band_names$name
+
+# return probabilities, where each class is
+# associated with a layer in an image stack
+# and the probabilities reflect the probabilities
+# of the classification for said layer
+lulc_probabilities <- terra::predict(
+  swiss_multispec_data,
+  xgb_best_model,
+  type = "prob"
+)
+
+ggplot() +
+  tidyterra::geom_spatraster(data = lulc_probabilities) +
+  scale_fill_viridis_c(
+    na.value = NA,
+    name = "Class probabilities",
+    option = "magma"
+  ) +
+  scale_x_continuous(breaks = seq(-180, 180, 2)) +
+  theme_bw() +
+  theme(
+    legend.position = "bottom"
+  ) +
+  facet_wrap(~lyr)
+
+
+# LULC map
+# generate the map by selecting maximum probabilities
+# from the model output
+lulc_map <- terra::app(lulc_probabilities, which.max)
+
+classes <- c(
+  "Tree Cover",
+  "Shrub Cover",
+  "Herbaceous Vegetation & Grassland",
+  "Cultivated and Managed",
+  "Mosaic: Managed & Natural Vegetation",
+  "Regularly Flooded & Wetland",
+  "Urban & Built Up",
+  "Snow and Ice",
+  "Barren",
+  "Open Water"
+)
+
+# set te colour scale manually
+palcol <- colorFactor(
+  c(
+    "#05450a",
+    "#78d203",
+    "#009900",
+    "#c24f44",
+    "#ff6d4c",
+    "#27ff87",
+    "#a5a5a5",
+    "#69fff8",
+    "#f9ffa4",
+    "#1c0dff"
+  ),
+  na.color = NA,
+  domain = 1:10
+)
+
+# build the leaflet map
+leaflet() |>
+  addProviderTiles(providers$Esri.WorldImagery, group = "World Imagery") |>
+  addProviderTiles(providers$Esri.WorldTopoMap, group = "World Topo") |>
+  addRasterImage(
+    lulc_map,
+    colors = palcol,
+    opacity = 0.8,
+    method = "ngb",
+    group = "XGBOOST"
+  ) |>
+  addRasterImage(
+    modis_lulc,
+    colors = palcol,
+    opacity = 0.8,
+    method = "ngb",
+    group = "MODIS MCD12Q1"
+  ) |>
+  addLayersControl(
+    baseGroups = c("World Imagery","World Topo"),
+    position = "topleft",
+    options = layersControlOptions(collapsed = FALSE),
+    overlayGroups = c("XGBOOST", "MODIS MCD12Q1")
+  ) |>
+  hideGroup("MODIS MCD12Q1") |>
+  addLegend(
+    colors = palcol(1:10),
+    values = 1:10,
+    labels = classes,
+    title = "Land-Use and Land-Cover class"
+  )
+
