@@ -297,6 +297,8 @@ lulc_probabilities <- terra::predict(
   type = "prob"
 )
 
+saveRDS(lulc_probabilities, (paste0(here::here(),"./data/lulc_probabilities.rds")))
+
 ggplot() +
   tidyterra::geom_spatraster(data = lulc_probabilities) +
   scale_fill_viridis_c(
@@ -349,6 +351,7 @@ palcol <- colorFactor(
 )
 
 # build the leaflet map
+library(leaflet)
 leaflet() |>
   addProviderTiles(providers$Esri.WorldImagery, group = "World Imagery") |>
   addProviderTiles(providers$Esri.WorldTopoMap, group = "World Topo") |>
@@ -358,13 +361,6 @@ leaflet() |>
     opacity = 0.8,
     method = "ngb",
     group = "XGBOOST"
-  ) |>
-  addRasterImage(
-    modis_lulc,
-    colors = palcol,
-    opacity = 0.8,
-    method = "ngb",
-    group = "MODIS MCD12Q1"
   ) |>
   addLayersControl(
     baseGroups = c("World Imagery","World Topo"),
