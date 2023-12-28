@@ -1,3 +1,19 @@
+### Libraries
+
+library(terra)
+library(dplyr)
+library(ggplot2)
+library(patchwork)
+library(MODISTools)
+library(appeears)
+library(vroom)
+library(rsample)
+library(parsnip)
+library(workflows)
+library(tune)
+library(dials)
+library(xgboost)
+
 ### Validation sites
 # Read the validation sites from Fritz et al. 2017 straight from Zenodo.org
 validation_sites <- readr::read_csv(
@@ -20,13 +36,12 @@ set.seed(0)
 validation_selection <- validation_selection |>
   dplyr::slice_sample(n = 150, by = LC1)
 
-saveRDS(validation_selection, (paste0(here::here(),"./data/validation_random_selection.rds")))
-
 # split validation selection by land cover type into a nested list, for easier processing later on
 validation_selection <- validation_selection |>
   dplyr::group_by(LC1) |>
   dplyr::group_split()
 
+saveRDS(validation_selection, (paste0(here::here(),"./data/validation_random_selection.rds")))
 ###################################################################################################
 ### Download appeears data
 library(appeears)
@@ -85,8 +100,7 @@ sites <- validation_selection |>
   )
 
 # combine the NBAR and land-use land-cover labels by location id (Category)
-library(dplyr)
-ml_df <- left_join(nbar_wide, sites) |>
+ml_df <- left_join(sites, nbar_wide) |>
   dplyr::select(
     LC1,
     contains("band")
@@ -94,8 +108,6 @@ ml_df <- left_join(nbar_wide, sites) |>
 
 ###############################################################################
 ### Model training
-library(rsample)
-
 # create a data split across land cover classes
 ml_df_split <- ml_df |>
   rsample::initial_split(
@@ -160,13 +172,6 @@ folds <- rsample::vfold_cv(train, v = 3)
 # 2. the cross-validation across training data
 # 3. the (hyper) parameter specifications
 # all data are saved for evaluation
-library(doParallel)
-library(foreach)
-library(parallel)
-
-cl <- makeCluster(detectCores())
-registerDoParallel(cl)
-
 xgb_results <- tune::tune_grid(
   xgb_workflow,
   resamples = folds,

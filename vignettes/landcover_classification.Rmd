@@ -343,6 +343,12 @@ folds <- rsample::vfold_cv(train, v = 3)
 # 2. the cross-validation across training data
 # 3. the (hyper) parameter specifications
 # all data are saved for evaluation
+library(foreach)
+library(parallel)
+library(doParallel)
+cl <- makeCluster(detectCores())
+registerDoParallel(cl)
+
 library(xgboost)
 xgb_results <- tune::tune_grid(
   xgb_workflow,
@@ -350,6 +356,7 @@ xgb_results <- tune::tune_grid(
   grid = hp_settings,
   control = tune::control_grid(save_pred = TRUE)
 )
+readRDS(paste0(here::here(),"./data/xgb_results.rds"))
 saveRDS(xgb_results, (paste0(here::here(),"./data/xgb_results.rds")))
 
 ```
@@ -374,6 +381,7 @@ xgb_best_hp <- tune::finalize_workflow(
 
 print(xgb_best_hp)
 ```
+
 ```{r}
 # train a final (best) model with optimal
 # hyper-parameters
@@ -431,5 +439,3 @@ rs_request(
   verbose = TRUE
 )
 ```
-
-
