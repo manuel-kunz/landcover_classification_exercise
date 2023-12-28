@@ -13,6 +13,7 @@ library(workflows)
 library(tune)
 library(dials)
 library(xgboost)
+library(stringr)
 
 ### Validation sites
 # Read the validation sites from Fritz et al. 2017 straight from Zenodo.org
@@ -194,5 +195,29 @@ xgb_best_hp <- tune::finalize_workflow(
   xgb_workflow,
   xgb_best
 )
+saveRDS(xgb_best_hp, (paste0(here::here(),"./data/xgb_best_hp.rds")))
+
 
 print(xgb_best_hp)
+
+
+# train a final (best) model with optimal
+# hyper-parameters
+xgb_best_model <- fit(xgb_best_hp, train)
+saveRDS(xgb_best_model, (paste0(here::here(),"./data/xgb_best_model.rds")))
+
+### Model evaluation
+# run the model on our test data
+# using predict()
+test_results <- predict(xgb_best_model, test)
+
+# load the caret library to
+# access confusionMatrix functionality
+library(caret)
+
+# use caret's confusionMatrix function to get
+# a full overview of metrics
+caret::confusionMatrix(
+  reference = as.factor(test$LC1),
+  data = as.factor(test_results$.pred_class)
+)
