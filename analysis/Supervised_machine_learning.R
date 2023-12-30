@@ -131,15 +131,15 @@ library(workflows)
 # specify our model structure the model to be used and the type of task we want to evaluate
 model_settings <- parsnip::boost_tree(
   trees = 50,
+  mtry = 2,
   min_n = tune(),
   tree_depth = tune(),
-  # learn_rate = tune()
+  #learn_rate = 0.01
 ) |>
   set_engine("xgboost") |>
   set_mode("classification")
 
 print(model_settings)
-
 saveRDS(model_settings, (paste0(here::here(),"./data/model_settings.rds")))
 # create a workflow compatible with the {tune} package which combines model settings with the desired
 # model structure (data / formula)
@@ -160,10 +160,13 @@ saveRDS(xgb_workflow, (paste0(here::here(),"./data/xgb_workflow.rds")))
 library(tune)
 library(dials)
 
+set.seed(0)
+
 hp_settings <- dials::grid_latin_hypercube(
   tune::extract_parameter_set_dials(xgb_workflow),
-  size = 3
+  size = 10
 )
+print(hp_settings)
 
 saveRDS(hp_settings, (paste0(here::here(),"./data/hp_settings.rds")))
 

@@ -50,6 +50,5 @@ leaflet() |>
 
 
 
-## 2 Supvervised machine learning
-
-
+## 1 Supvervised machine learning
+### 1.1 Four ways to improve the LULC model
