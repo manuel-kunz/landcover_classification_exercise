@@ -1,5 +1,4 @@
 ### Libraries
-
 library(terra)
 library(dplyr)
 library(ggplot2)
@@ -42,7 +41,7 @@ validation_selection <- validation_selection |>
   dplyr::group_by(LC1) |>
   dplyr::group_split()
 
-saveRDS(validation_selection, (paste0(here::here(),"./data/validation_random_selection.rds")))
+saveRDS(validation_selection, (paste0(here::here(),"./data/validation_selection.rds")))
 ###################################################################################################
 ### Download appeears data
 library(appeears)
@@ -120,8 +119,8 @@ ml_df_split <- ml_df |>
 train <- rsample::training(ml_df_split)
 test <- rsample::testing(ml_df_split)
 
-saveRDS(train, (paste0(here::here(),"./data/training_data.rds")))
-saveRDS(test, (paste0(here::here(),"./data/test_data.rds")))
+saveRDS(train, (paste0(here::here(),"./data/training_data_original.rds")))
+saveRDS(test, (paste0(here::here(),"./data/test_data_original.rds")))
 
 
 ### Model structure and workflow
@@ -139,6 +138,9 @@ model_settings <- parsnip::boost_tree(
   set_engine("xgboost") |>
   set_mode("classification")
 
+print(model_settings)
+
+saveRDS(model_settings, (paste0(here::here(),"./data/model_settings.rds")))
 # create a workflow compatible with the {tune} package which combines model settings with the desired
 # model structure (data / formula)
 xgb_workflow <- workflows::workflow() |>
@@ -146,6 +148,7 @@ xgb_workflow <- workflows::workflow() |>
   add_model(model_settings)
 
 print(xgb_workflow)
+saveRDS(xgb_workflow, (paste0(here::here(),"./data/xgb_workflow.rds")))
 
 ### Hyperparameter settings
 
@@ -162,11 +165,13 @@ hp_settings <- dials::grid_latin_hypercube(
   size = 3
 )
 
+saveRDS(hp_settings, (paste0(here::here(),"./data/hp_settings.rds")))
 
 ### Parameter estimation and cross-validation
 
 # set the folds (division into different) cross-validation training datasets
 folds <- rsample::vfold_cv(train, v = 3)
+saveRDS(folds, (paste0(here::here(),"./data/folds.rds")))
 
 # optimize the model (hyper) parameters using the:
 # 1. workflow (i.e. model)
@@ -180,12 +185,16 @@ xgb_results <- tune::tune_grid(
   control = tune::control_grid(save_pred = TRUE)
 )
 
+saveRDS(xgb_results, (paste0(here::here(),"./data/xgb_results.rds")))
+
 # select the best model based upon
 # the root mean squared error
 xgb_best <- tune::select_best(
   xgb_results,
   metric = "roc_auc"
 )
+print(xgb_best)
+saveRDS(xgb_best, (paste0(here::here(),"./data/xgb_best.rds")))
 
 # cook up a model using finalize_workflow
 # which takes workflow (model) specifications
@@ -195,6 +204,7 @@ xgb_best_hp <- tune::finalize_workflow(
   xgb_workflow,
   xgb_best
 )
+
 saveRDS(xgb_best_hp, (paste0(here::here(),"./data/xgb_best_hp.rds")))
 
 
@@ -210,6 +220,8 @@ saveRDS(xgb_best_model, (paste0(here::here(),"./data/xgb_best_model.rds")))
 # run the model on our test data
 # using predict()
 test_results <- predict(xgb_best_model, test)
+print(test_results)
+
 
 # load the caret library to
 # access confusionMatrix functionality
@@ -298,6 +310,7 @@ lulc_probabilities <- terra::predict(
 )
 
 saveRDS(lulc_probabilities, (paste0(here::here(),"./data/lulc_probabilities.rds")))
+lulc_probabilities <- readRDS(paste0(here::here(),"./data/lulc_probabilities.rds"))
 
 ggplot() +
   tidyterra::geom_spatraster(data = lulc_probabilities) +
