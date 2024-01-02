@@ -13,7 +13,7 @@ output: html_document
 In this report, I present my results from exercise 8.3 "Land-Use and Land-Cover modelling" of Block 4 "Land cover classification" from the course "Applied Geodata Science II". In the first chapter (1), I will give a short summary about the model used in this exercise, which was already set up in Chapter 7 "Land-Cover classification" of the [Handfull of Pixels book](https://geco-bern.github.io/handfull_of_pixels/land_cover_classification.html). Afterwards, Chapter 2 contains the results to exercise 8.3. Finally, I will shortly summarise the my personal most important learnings and findings of this exercise in Chapter 3.
 
 ### 1 Land-Use and Land-Cover (LULC) model - Set up
-
+test
 @Friedl2010
 
 ### 2 Exercises
