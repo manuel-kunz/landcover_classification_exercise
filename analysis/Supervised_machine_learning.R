@@ -131,7 +131,7 @@ library(workflows)
 # specify our model structure the model to be used and the type of task we want to evaluate
 model_settings <- parsnip::boost_tree(
   trees = 50,
-  mtry = 2,
+  #mtry = 2,
   min_n = tune(),
   tree_depth = tune(),
   #learn_rate = 0.01
@@ -164,7 +164,7 @@ set.seed(0)
 
 hp_settings <- dials::grid_latin_hypercube(
   tune::extract_parameter_set_dials(xgb_workflow),
-  size = 10
+  size = 5
 )
 print(hp_settings)
 

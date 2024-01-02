@@ -1,54 +1,30 @@
 ---
 title: "Land-Use and Land-Cover Classification Exercise - Final Report"
 author: "Manuel Kunz"
-date: "2023-10-26"
+date: "2024-01-02"
+bibliography: "references.bib"
 output: html_document
 ---
 
-## 1 Unsupervised machine learning
-
-In this first chapter, I used the kmeans unsupervised machine learning approach tocreate four Leaf Area index (LAI) clusters . The used LAI data set comes were obtained by using the MODISTools package. Data is available for Switzerland in 2012. The following map shows the result of the unsupervised maching learning approach.
-
-```{r, LAI_map, echo = FALSE, warning=FALSE, message=FALSE}
-library(leaflet)
-library(raster)
-library(terra)
-
-kmeans_map <- readRDS(paste0(here::here(),"./data/kmeans_map.rds"))
-
-# set te colour scale manually
-palcol <- colorFactor(
-  c("#78d203", "#f9ffa4", "#5F9EA0", "#EEE0E5"),
-  domain = 1:4,
-  na.color = "transparent"
-  )
-
-# build the leaflet map
-leaflet() |> 
-  addProviderTiles(providers$Esri.WorldImagery, group = "World Imagery") |>
-  addProviderTiles(providers$Esri.WorldTopoMap, group = "World Topo") |>
-  addRasterImage(
-    kmeans_map,
-    colors = palcol,
-    opacity = 0.5,
-    method = "ngb",
-    group = "k-means cluster results"
-    ) |>
-  addLayersControl(
-    baseGroups = c("World Imagery","World Topo"),
-    position = "topleft",
-    options = layersControlOptions(collapsed = FALSE),
-    overlayGroups = c("k-means cluster results")
-    ) |>
-  addLegend(
-    colors = palcol(1:4),
-    values = c(1, 2, 3, 4),
-    title = "cluster",
-    labels = c(1, 2, 3, 4)
-    )
-```
 
 
+## Supervised machine learning
 
-## 1 Supvervised machine learning
-### 1.1 Four ways to improve the LULC model
+In this report, I present my results from exercise 8.3 "Land-Use and Land-Cover modelling" of Block 4 "Land cover classification" from the course "Applied Geodata Science II". In the first chapter (1), I will give a short summary about the model used in this exercise, which was already set up in Chapter 7 "Land-Cover classification" of the [Handfull of Pixels book](https://geco-bern.github.io/handfull_of_pixels/land_cover_classification.html). Afterwards, Chapter 2 contains the results to exercise 8.3. Finally, I will shortly summarise the my personal most important learnings and findings of this exercise in Chapter 3.
+
+### 1 Land-Use and Land-Cover (LULC) model - Set up
+
+@Friedl2010
+
+### 2 Exercises
+
+#### 2.1 Four ways to improve the LULC model
+
+increase number of dials parameters
+
+#### 2.2 Two ways to improve the LULC model - Implementation
+
+### 3 Conclusion
+
+### 4 References
+
