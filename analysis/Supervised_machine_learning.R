@@ -232,11 +232,11 @@ library(caret)
 
 # use caret's confusionMatrix function to get
 # a full overview of metrics
-caret::confusionMatrix(
+confusion_matrix <- caret::confusionMatrix(
   reference = as.factor(test$LC1),
   data = as.factor(test_results$.pred_class)
 )
-
+saveRDS(confusion_matrix, (paste0(here::here(),"./data/confusion_matrix.rds")))
 
 ### Model scaling
 kmeans_map <- readRDS(paste0(here::here(),"./data/kmeans_map.rds"))
