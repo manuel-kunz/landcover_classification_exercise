@@ -22,7 +22,7 @@ model_settings_improved <- parsnip::boost_tree(
   set_mode("classification")
 
 print(model_settings_improved)
-saveRDS(model_settings_improved, (paste0(here::here(),"./data/model_settings_improved.rds")))
+saveRDS(model_settings_improved, (here::here("./data/model_settings_improved.rds")))
 
 # create a workflow compatible with the {tune} package which combines model settings with the desired
 # model structure (data / formula)
