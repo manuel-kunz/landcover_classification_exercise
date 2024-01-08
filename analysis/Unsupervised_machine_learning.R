@@ -19,7 +19,7 @@ lai_2012 <- MODISTools::mt_subset(
   progress = TRUE
 )
 saveRDS(lai_2012, (paste0(here::here(),"./data/lai_2012.rds")))
-
+lai_2012 <- readRDS(paste0(here::here(),"./data/lai_2012.rds"))
 # convert the data to raster format
 r <- MODISTools::mt_to_terra(
   lai_2012,

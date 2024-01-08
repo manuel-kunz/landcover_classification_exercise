@@ -11,11 +11,109 @@ output: html_document
 In this report, I present my results from exercise 8.3 "Land-Use and Land-Cover modelling" of Block 4 "Land cover classification" from the course "Applied Geodata Science II". In the first chapter (1), I will give a short summary about the model used in this exercise, which was already set up in Chapter 7 "Land-Cover classification" of the [Handfull of Pixels book](https://geco-bern.github.io/handfull_of_pixels/land_cover_classification.html). Afterwards, Chapter 2 contains the results to exercise 8.3. Finally, I will shortly summarise the my personal most important learnings and findings of this exercise in Chapter 3.
 
 ### 1 Land-Use and Land-Cover (LULC) model - Set up
-test
-@Friedl2010
+#### 1.1 Validation data
+In this exercise, I will use a random forest machine learning algorithm to classify satellite images. First, I downloaded a validation data set, containing land cover and land use reference data from @Fritz2017. The original data set contains over 150'000 observations, which is why the data was reduced. From the reduced data set, I selected 150 random location per LULC class (there are 10 LULC classes meaning I selected a total of 1'500 locations).
+```{r, data preparation, message=FALSE, warning=FALSE}
+validation_sites <- readRDS(here::here("./data/validation_sites.RDS"))
+# filter out data by competition, coverage, percentage and latitude
+validation_selection <- validation_sites |>
+  dplyr::filter(
+    (competition == 4 | competition == 1),
+    perc1 > 80,
+    lat > 0
+  )
+
+set.seed(1)
+validation_selection <- validation_selection |>
+  dplyr::slice_sample(n = 150, by = LC1)
+
+```
+
+
+
+```{r, validation sites, echo=FALSE, message=FALSE, warning=FALSE, fig.cap= "Figure 1: Map showing the chosen validation sites classified in 10 LULC classes"}
+library(here)
+validation_selection <- readRDS(here::here("./data/validation_selection.rds"))
+
+library(leaflet)
+palcol <- colorFactor(
+  c('#8dd3c7','#ffffb3','#bebada','#fb8072','#80b1d3','#fdb462','#b3de69','#fccde5','#d9d9d9','#bc80bd'),
+  domain = 1:10,
+  na.color = "transparent"
+)
+
+leaflet() |>
+  addProviderTiles(providers$Esri.WorldImagery, group = "World Imagery") |>
+  addProviderTiles(providers$Esri.WorldTopoMap, group = "World Topo") |>
+  addCircleMarkers(
+    data = validation_selection,
+    lng = ~lon,
+    lat = ~lat,
+    color = ~palcol(LC1),
+    radius = 0.05,
+    opacity = 1,
+    fillOpacity = 1,
+    group = "Validation sites"
+  ) |>
+  addLayersControl(
+    baseGroups = c("World Imagery","World Topo"),
+    position = "topleft",
+    options = layersControlOptions(collapsed = FALSE),
+    overlayGroups = c("Validation sites")
+  ) |>
+  addLegend(
+    colors = palcol(1:10),
+    values = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+    title = "LULC classes",
+    labels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+  )
+```
+
+#### 1.2 Training data
+Now that the validation sites are sampled, I downloaded daily multi-spectral data from the MCD43A4 product for 2012 using the {appears} package in R as training data. The training data was then prepared to be used in the model training.
+
+#### 1.3 Model training
+First, the data was split into training and testing data splits using the {rsample} package. Then, the model was defined as following: To create the model, the {parsnip} R package was used.
+```{r, model sturcture, echo=TRUE, message=FALSE, warning=FALSE}
+library(parsnip)
+model_settings <-readRDS(here::here("./data/model_settings.rds"))
+print(model_settings)
+
+```
+The following workflow was used ({tune} R package). In the first calcution step, only tree size were defined as hyperparameters. 
+```{r, workflow, message=FALSE, warning=FALSE}
+library(tune)
+xgb_workflow <- readRDS(here::here("./data/xgb_workflow.rds"))
+print(xgb_workflow)
+```
+As visible in the workflow, min_n and tree_depth were not defined. This is because these hyperparameters were optimised using the {tune} and {dials} packages.
+
+```{r, hyperparameter tuning, message=FALSE, warning=FALSE}
+library(tune)
+library(dials)
+
+set.seed(1)
+
+hp_settings <- dials::grid_latin_hypercube(
+  tune::extract_parameter_set_dials(xgb_workflow),
+  size = 5
+)
+print(hp_settings)
+```
+
+#### 1.4 Model calibration
+The model was calibrated using a 3-fold cross validation. Then the model was optimised across the folds to find the best hyperparameter settings. Once the best hyperparameter setting was found, the final model was created using the "fit" fuction. The best hyperparameter settings for the first calcualtion are the following:
+```{r, hyperparameter setting, echo=FALSE, message=FALSE, warning=FALSE}
+readRDS(here::here("./data/xgb_best_hp.rds"))
+```
+#### 1.5 Model evaluation
+Once the hyperparameter were set, the predict function was used to run the model with the testing data. Finally, the results of the evaluation are presented in the following confusion matrix:
+```{r, confusion matrix, echo=FALSE, message=FALSE, warning=FALSE}
+library(caret)
+readRDS(here::here("./data/confusion_matrix.rds"))
+```
 
 ### 2 Exercises
-
 #### 2.1 Four ways to improve the LULC model
 
 increase number of dials parameters

@@ -14,11 +14,13 @@ library(dials)
 library(xgboost)
 library(stringr)
 
+
 ### Validation sites
 # Read the validation sites from Fritz et al. 2017 straight from Zenodo.org
 validation_sites <- readr::read_csv(
   "https://zenodo.org/record/6572482/files/Global%20LULC%20reference%20data%20.csv?download=1"
 )
+saveRDS(validation_sites, (paste0(here::here(),"./data/validation_sites.rds")))
 
 # filter out data by competition, coverage, percentage and latitude
 validation_selection <- validation_sites |>
@@ -31,17 +33,52 @@ saveRDS(validation_selection, (paste0(here::here(),"./data/validation_filtered.r
 
 # the above selection includes all data but we now subsample to 150 random locations
 # per (group_by()) land cover class (LC1) set a seed for reproducibilty
-set.seed(0)
-
+set.seed(1)
 validation_selection <- validation_selection |>
   dplyr::slice_sample(n = 150, by = LC1)
+
+library(leaflet)
+palcol <- colorFactor(
+  c('#8dd3c7','#ffffb3','#bebada','#fb8072','#80b1d3','#fdb462','#b3de69','#fccde5','#d9d9d9','#bc80bd'),
+  domain = 1:10,
+  na.color = "transparent"
+)
+
+leaflet() |>
+  addProviderTiles(providers$Esri.WorldImagery, group = "World Imagery") |>
+  addProviderTiles(providers$Esri.WorldTopoMap, group = "World Topo") |>
+  addTiles() |>
+  addCircleMarkers(
+    data = validation_selection,
+    lng = ~lon,
+    lat = ~lat,
+    color = ~palcol(LC1),
+    radius = 0.05,
+    opacity = 1,
+    fillOpacity = 1,
+    group = "Validation sites"
+  ) |>
+  addLayersControl(
+    baseGroups = c("World Imagery","World Topo"),
+    position = "topleft",
+    options = layersControlOptions(collapsed = FALSE),
+    overlayGroups = c("Validation Sites")
+  ) |>
+  addLegend(
+    colors = palcol(1:10),
+    values = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+    title = "cluster",
+    labels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+  )
+
+saveRDS(validation_selection, (paste0(here::here(),"./data/validation_selection.rds")))
 
 # split validation selection by land cover type into a nested list, for easier processing later on
 validation_selection <- validation_selection |>
   dplyr::group_by(LC1) |>
   dplyr::group_split()
 
-saveRDS(validation_selection, (paste0(here::here(),"./data/validation_selection.rds")))
+
 ###################################################################################################
 ### Download appeears data
 library(appeears)
@@ -160,7 +197,7 @@ saveRDS(xgb_workflow, (paste0(here::here(),"./data/xgb_workflow.rds")))
 library(tune)
 library(dials)
 
-set.seed(0)
+set.seed(1)
 
 hp_settings <- dials::grid_latin_hypercube(
   tune::extract_parameter_set_dials(xgb_workflow),
@@ -237,6 +274,8 @@ confusion_matrix <- caret::confusionMatrix(
   data = as.factor(test_results$.pred_class)
 )
 saveRDS(confusion_matrix, (paste0(here::here(),"./data/confusion_matrix.rds")))
+
+confusion_matrix
 
 ### Model scaling
 kmeans_map <- readRDS(paste0(here::here(),"./data/kmeans_map.rds"))
