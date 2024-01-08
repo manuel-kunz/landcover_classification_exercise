@@ -55,6 +55,8 @@ saveRDS(hp_settings_improved, (here::here("./data/hp_settings_improved_II.rds"))
 
 ### Parameter estimation and cross-validation
 
+# Training data set
+train <- readRDS(here::here("./data/training_data_original.rds"))
 # set the folds (division into different) cross-validation training datasets
 set.seed(180)
 folds <- rsample::vfold_cv(train, v = 10)
