@@ -1,7 +1,7 @@
 ---
 title: "Land-Use and Land-Cover Classification Exercise - Final Report"
 author: "Manuel Kunz"
-date: "2024-01-02"
+date: "2024-01-08"
 bibliography: "references.bib"
 output: html_document
 ---
@@ -12,7 +12,7 @@ In this report, I present my results from exercise 8.3 "Land-Use and Land-Cover 
 
 ### 1 Land-Use and Land-Cover (LULC) model - Set up
 #### 1.1 Validation data
-In this exercise, I will use a random forest machine learning algorithm to classify satellite images. First, I downloaded a validation data set, containing land cover and land use reference data from @Fritz2017. The original data set contains over 150'000 observations, which is why the data was reduced. From the reduced data set, I selected 150 random location per LULC class (there are 10 LULC classes meaning I selected a total of 1'500 locations).
+In this exercise, I will use a random forest machine learning algorithm to classify satellite images. First, I downloaded a validation data set, containing land cover and land use reference data from @Fritz2017. The original data set contains over 150'000 observations, which is why the data was reduced. From the reduced data set, I selected 150 random location per LULC class (there are 10 LULC classes meaning I selected a total of 1'500 locations). Figure 1 shows the spatial distribution of the selected validation data as well as their LULC class.
 ```{r, data preparation, message=FALSE, warning=FALSE}
 validation_sites <- readRDS(here::here("./data/validation_sites.RDS"))
 # filter out data by competition, coverage, percentage and latitude
@@ -73,15 +73,15 @@ leaflet() |>
 Now that the validation sites are sampled, I downloaded daily multi-spectral data from the MCD43A4 product for 2012 using the {appears} package in R as training data. The training data was then prepared to be used in the model training.
 
 #### 1.3 Model training
-First, the data was split into training and testing data splits using the {rsample} package. Then, the model was defined as following: To create the model, the {parsnip} R package was used.
-```{r, model sturcture, echo=TRUE, message=FALSE, warning=FALSE}
+First, the data was split into training and testing data splits using the {rsample} package. To create the model, the {parsnip} R package was used. Ultimately, the model was defined as following: 
+```{r, model sturcture, echo=FALSE, message=FALSE, warning=FALSE}
 library(parsnip)
 model_settings <-readRDS(here::here("./data/model_settings.rds"))
 print(model_settings)
 
 ```
 The following workflow was used ({tune} R package). In the first calcution step, only tree size were defined as hyperparameters. 
-```{r, workflow, message=FALSE, warning=FALSE}
+```{r, workflow, echo=FALSE, message=FALSE, warning=FALSE}
 library(tune)
 xgb_workflow <- readRDS(here::here("./data/xgb_workflow.rds"))
 print(xgb_workflow)
@@ -119,12 +119,13 @@ A first way to improve the model would be to increase the size of the validation
 
 A second way to improve the model is to apply a different cross-validation strategy. As described in Chapter 1.4, I used a random cross validation strategy to train the model. By applying a spatial cross-validation, where the folds are created in a way that accounts for the geographical distribution of the data, the model might be improved.
 
-Thirdly, the model could be improved by tuning additional hyperparameters. In the presented workflow (Chapter 1.3), the hyperparameter "number of trees" was fixed at 50, and min_n and tree_depth were tuned. In order to improve the LULC model, the number of trees can be change, or additional hyperparameters (e.g. mtry "The number of variables to consider to make decisions at each node". Definition taken from AGDS I, Chapter 11.3).
+Thirdly, the model could be improved by tuning additional hyperparameters. In the presented workflow (Chapter 1.3), the hyperparameter "number of trees" was fixed at 50, and min_n and tree_depth were tuned. In order to improve the LULC model, the number of trees can be change, or additional hyperparameters (e.g. mtry "The number of variables to consider to make decisions at each node". Definition taken from AGDS I, Chapter 11.3) can be included.
 
-Lastly, a fourth way to improve the LULC model is to increase the number of folds. In the base model, the number of folds was set to 3. Increasing the fold number could potentially increase the model's performance.
+Lastly, a fourth way to improve the LULC model is to increase the number of folds in the cross-validation. In the base model, the number of folds was set to 3. Increasing the fold number could potentially increase the model's performance.
 
 #### 2.2 Two ways to improve the LULC model - Implementation
 In this chapter, I present my implementation of two of the above-mentioned ways to improve the LULC model.
+
 ##### 2.2.1 Hyperparameter settings
 As outlined in Chapter 2.1, changing the hyperparameter settings can improve the model. Therefore, I implemented the following changes to the hyperparameter settings of the model: I left the parameter "number of trees" flexible, so that it was also tuned. Furthermore, I defined the hyperparameter "mtry" as 2. Additionally, I increased the number of parameters, which are generated with the function "extract_parameters_set_dials" from the {tune} package from 5 to 10. Through that, I increase the number of possible hyperparameter settings that are tested which increases the possibility to find a better combination. The following hyperparameter setting were used:
 ```{r, changed hyperparameter settings, echo=FALSE, message=FALSE, warning=FALSE}
@@ -139,8 +140,11 @@ Here, I used the same hyperparameter settings as in Chapter 2.2.1, but increased
 ```{r, improved model statistics II, echo=FALSE, message=FALSE, warning=FALSE}
 readRDS(here::here("./data/confusion_matrix_improved_II.rds"))
 ```
+#### 2.3 Leaderboard submission
+I used my improved model (final model with both improvements) to predict the LULC classes for training and testing data from @hufkens_2023_8298491. The predicted LULC results are saved in csv-file and submitted to the [agds2_course_repository](https://github.com/geco-bern/agds2_course).
 
 ### 3 Conclusion
+In this exercise, I implemented a Random Forest model to predict LULC classes with real LULC data as validation data and remote sensing data as training data. I took the model that was created in Chapter 7 "Land-Cover classification" of the [Handfull of Pixels book](https://geco-bern.github.io/handfull_of_pixels/land_cover_classification.html) and improved the model by tuning the hyperparameters and increasing the number of cross-validation folds. The resulting confusion matrices showed, that the accuracy and the kappa of the predicition was actually increased compared to the base model. However, the second improvement (increasing the fold number) lead to very similar results compared to the first improvement.
 
 ### 4 References
 
