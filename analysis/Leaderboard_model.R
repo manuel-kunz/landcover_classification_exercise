@@ -12,7 +12,7 @@ library(stringr)
 
 ### Training data
 
-training_data <- readRDS(paste0(here::here(),"./data/training_data.rds"))
+training_data <- readRDS(here::here("./data/training_data.rds"))
 
 ### Model setup
 
@@ -87,7 +87,7 @@ xgb_best_model <- fit(xgb_best_hp, training_data)
 
 ### Model evaluation
 # import test data
-test_data <- readRDS(paste0(here::here(),"./data/test_data.rds"))
+test_data <- readRDS(here::here("./data/test_data.rds"))
 print(test_data)
 
 # run the model on our test data
@@ -98,5 +98,5 @@ print(test_results)
 colnames(test_results) <- "lulc_class"
 
 
-write.csv(test_results, file = here::here("./data/manuel-kunz_results.csv"), row.names = FALSE, quote = FALSE)
+write.csv(test_results, file = (here::here("./data/manuel-kunz_results.csv")), row.names = FALSE, quote = FALSE)
 

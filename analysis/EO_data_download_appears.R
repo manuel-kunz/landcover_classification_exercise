@@ -1,7 +1,11 @@
 library(appeears)
 library(keyring)
+library(tidyr)
+library(dplyr)
 
-source(paste0(here::here(),"./R/Download_EO_data_appears.R"))
+validation_selection <- readRDS(here::here("./data/validation_selection.rds"))
+
+source(here::here("./R/Download_EO_data_appears.R"))
 
 # Query the appeears API and process
 # data in batches - this function

@@ -22,7 +22,7 @@ model_settings_improved <- parsnip::boost_tree(
   set_mode("classification")
 
 print(model_settings_improved)
-saveRDS(model_settings_improved, (paste0(here::here(),"./data/model_settings_improved_II.rds")))
+saveRDS(model_settings_improved, (here::here("./data/model_settings_improved_II.rds")))
 
 # create a workflow compatible with the {tune} package which combines model settings with the desired
 # model structure (data / formula)
@@ -31,7 +31,7 @@ xgb_workflow_improved <- workflows::workflow() |>
   add_model(model_settings_improved)
 
 print(xgb_workflow_improved)
-saveRDS(xgb_workflow_improved, (paste0(here::here(),"./data/xgb_workflow_improved_II.rds")))
+saveRDS(xgb_workflow_improved, (here::here("./data/xgb_workflow_improved_II.rds")))
 
 ### Hyperparameter settings
 
@@ -51,7 +51,7 @@ hp_settings_improved <- dials::grid_latin_hypercube(
 )
 print(hp_settings_improved)
 
-saveRDS(hp_settings_improved, (paste0(here::here(),"./data/hp_settings_improved_II.rds")))
+saveRDS(hp_settings_improved, (here::here("./data/hp_settings_improved_II.rds")))
 
 ### Parameter estimation and cross-validation
 
@@ -72,7 +72,7 @@ xgb_results_improved <- tune::tune_grid(
   control = tune::control_grid(save_pred = TRUE)
 )
 
-saveRDS(xgb_results_improved, (paste0(here::here(),"./data/xgb_results_improved_II.rds")))
+saveRDS(xgb_results_improved, (here::here("./data/xgb_results_improved_II.rds")))
 
 # select the best model based upon
 # the root mean squared error
@@ -90,7 +90,7 @@ xgb_best_hp_improved <- tune::finalize_workflow(
   xgb_workflow_improved,
   xgb_best_improved
 )
-saveRDS(xgb_best_hp_improved, (paste0(here::here(),"./data/xgb_best_hp_improved_II.rds")))
+saveRDS(xgb_best_hp_improved, (here::here("./data/xgb_best_hp_improved_II.rds")))
 # train a final (best) model with optimal
 # hyper-parameters
 xgb_best_model_improved <- fit(xgb_best_hp_improved, train)
@@ -99,7 +99,7 @@ xgb_best_model_improved <- fit(xgb_best_hp_improved, train)
 ### Model evaluation
 
 # import test data
-test_data <- readRDS(paste0(here::here(),"./data/test_data_original.rds"))
+test_data <- readRDS(here::here("./data/test_data_original.rds"))
 print(test_data)
 
 # run the model on our test data
@@ -119,4 +119,4 @@ confusion_matrix_improved <- caret::confusionMatrix(
   data = as.factor(test_results$.pred_class)
 )
 confusion_matrix_improved
-saveRDS(confusion_matrix_improved, here::here("./data/confusion_matrix_improved_II.rds"))
+saveRDS(confusion_matrix_improved, (here::here("./data/confusion_matrix_improved_II.rds")))
