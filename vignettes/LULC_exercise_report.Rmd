@@ -88,16 +88,9 @@ print(xgb_workflow)
 ```
 As visible in the workflow, min_n and tree_depth were not defined. This is because these hyperparameters were optimised using the {tune} and {dials} packages.
 
-```{r, hyperparameter tuning, message=FALSE, warning=FALSE}
-library(tune)
-library(dials)
+```{r, hyperparameter tuning,echo=FALSE, message=FALSE, warning=FALSE}
 
-set.seed(1)
-
-hp_settings <- dials::grid_latin_hypercube(
-  tune::extract_parameter_set_dials(xgb_workflow),
-  size = 5
-)
+hp_settings <- readRDS(here::here("./data/hp_settings.rds"))
 print(hp_settings)
 ```
 
