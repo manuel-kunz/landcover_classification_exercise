@@ -143,8 +143,10 @@ ml_df <- left_join(sites, nbar_wide) |>
     contains("band")
   )
 
+
 ###############################################################################
 ### Model training
+library(tidyr)
 # create a data split across land cover classes
 ml_df_split <- ml_df |>
   rsample::initial_split(
@@ -153,6 +155,7 @@ ml_df_split <- ml_df |>
   )
 
 # select training and testing data based on this split
+library(rsample)
 train <- rsample::training(ml_df_split)
 test <- rsample::testing(ml_df_split)
 
@@ -168,10 +171,8 @@ library(workflows)
 # specify our model structure the model to be used and the type of task we want to evaluate
 model_settings <- parsnip::boost_tree(
   trees = 50,
-  #mtry = 2,
   min_n = tune(),
   tree_depth = tune(),
-  #learn_rate = 0.01
 ) |>
   set_engine("xgboost") |>
   set_mode("classification")
@@ -197,8 +198,7 @@ saveRDS(xgb_workflow, (paste0(here::here(),"./data/xgb_workflow.rds")))
 library(tune)
 library(dials)
 
-set.seed(1)
-
+set.seed(150)
 hp_settings <- dials::grid_latin_hypercube(
   tune::extract_parameter_set_dials(xgb_workflow),
   size = 5

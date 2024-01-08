@@ -115,18 +115,30 @@ readRDS(here::here("./data/confusion_matrix.rds"))
 
 ### 2 Exercises
 #### 2.1 Four ways to improve the LULC model
+A first way to improve the model would be to increase the size of the validation data. As described in Chapter 1.1, I randomly selected 150 validation location per LULC class. If the number of validation locations is increased, the probability that the validation data covers a larger area is increased.
 
-increase number of dials parameters
+A second way to improve the model is to apply a different cross-validation strategy. As described in Chapter 1.4, I used a random cross validation strategy to train the model. By applying a spatial cross-validation, where the folds are created in a way that accounts for the geographical distribution of the data, the model might be improved.
+
+Thirdly, the model could be improved by tuning additional hyperparameters. In the presented workflow (Chapter 1.3), the hyperparameter "number of trees" was fixed at 50, and min_n and tree_depth were tuned. In order to improve the LULC model, the number of trees can be change, or additional hyperparameters (e.g. mtry "The number of variables to consider to make decisions at each node". Definition taken from AGDS I, Chapter 11.3).
+
+Lastly, a fourth way to improve the LULC model is to increase the number of folds. In the base model, the number of folds was set to 3. Increasing the fold number could potentially increase the model's performance.
 
 #### 2.2 Two ways to improve the LULC model - Implementation
-
-improved model statistics 
-```{r, improved model statistics}
-confusion_matrix_stats <- readRDS(here::here("./data/confusion_matrix.rds"))
-confusion_matrix_stats
-
+In this chapter, I present my implementation of two of the above-mentioned ways to improve the LULC model.
+##### 2.2.1 Hyperparameter settings
+As outlined in Chapter 2.1, changing the hyperparameter settings can improve the model. Therefore, I implemented the following changes to the hyperparameter settings of the model: I left the parameter "number of trees" flexible, so that it was also tuned. Furthermore, I defined the hyperparameter "mtry" as 2. Additionally, I increased the number of parameters, which are generated with the function "extract_parameters_set_dials" from the {tune} package from 5 to 10. Through that, I increase the number of possible hyperparameter settings that are tested which increases the possibility to find a better combination. The following hyperparameter setting were used:
+```{r, changed hyperparameter settings, echo=FALSE, message=FALSE, warning=FALSE}
+readRDS(here::here("./data/xgb_best_hp_improved.rds"))
 ```
-
+Looking at the confusion matrix stats of the improved model shows, that the precision as well as Kappa was increased compared to the results of the first model configuration.
+```{r, improved model statistics I, echo=FALSE, message=FALSE, warning=FALSE}
+readRDS(here::here("./data/confusion_matrix_improved.rds"))
+```
+##### 2.2.2 10-fold cross-validation
+Here, I used the same hyperparameter settings as in Chapter 2.2.1, but increased the fold size from 3 to 10. With that, I expect that the results of the model improve. The results from the second improvement are the following:
+```{r, improved model statistics II, echo=FALSE, message=FALSE, warning=FALSE}
+readRDS(here::here("./data/confusion_matrix_improved_II.rds"))
+```
 
 ### 3 Conclusion
 
