@@ -92,7 +92,7 @@ rs_request_batch(
   request = task_nbar,
   workers = 10,
   user = "earth_data_manuel",
-  path = (here::here(),"./data-raw"),
+  path = (here::here("./data-raw")),
   verbose = TRUE,
   time_out = 28800
 )
